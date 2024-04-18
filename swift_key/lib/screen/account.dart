@@ -11,12 +11,8 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Welcome to the Account Page!'),
-      ),
-      // Include the custom bottom nav bar
-      bottomNavigationBar: CustomBottomNavBar(selectedIndex: 2),
+    return const Center(
+      child: Text('Welcome to the Account Page!'),
     );
   }
 }
