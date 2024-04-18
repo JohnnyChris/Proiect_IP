@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:swift_key/screen/page.dart';
 //import 'package:swift_key/screen/home.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -86,7 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.0)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PageScreen()),
+                        );
+                      },
                       child: const Text(
                         "Login",
                         style: TextStyle(
@@ -101,5 +108,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  } //pula pizda
+  }
 }
