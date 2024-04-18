@@ -11,12 +11,8 @@ class AccessScreen extends StatefulWidget {
 class _TestScreenState extends State<AccessScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Welcome to the Access Page!'),
-      ),
-      // Include the custom bottom nav bar
-      bottomNavigationBar: CustomBottomNavBar(selectedIndex: 1),
+    return const Center(
+      child: Text('Welcome to the Access Page!'),
     );
   }
 }

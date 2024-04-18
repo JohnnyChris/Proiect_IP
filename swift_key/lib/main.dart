@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:swift_key/screen/home.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:swift_key/screen/login.dart';
+import 'package:swift_key/screen/main_screen.dart';
 //import 'package:swift_key/screen/login.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
