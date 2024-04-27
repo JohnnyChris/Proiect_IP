@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:swift_key/Menu/navbar.dart';
 import 'package:swift_key/screen/account.dart';
-import 'package:swift_key/screen/page.dart';
+import 'package:swift_key/screen/home.dart';
 
 import 'access.dart';
 
@@ -22,11 +22,11 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       case 0:
         return const AccessScreen();
       case 1:
-        return const PageScreen();
+        return const HomeScreen();
       case 2:
         return const AccountScreen();
     }
-    return const PageScreen();
+    return const HomeScreen();
   }
 
   @override

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:swift_key/Menu/navbar.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -11,8 +13,12 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Welcome to the Account Page!'),
+    return const Scaffold(
+      
+      body: SingleChildScrollView(
+        
+
+      )
     );
   }
 }

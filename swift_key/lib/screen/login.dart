@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swift_key/screen/main_screen.dart';
-import 'package:swift_key/screen/page.dart';
 //import 'package:swift_key/screen/home.dart';
 
 class LoginScreen extends StatefulWidget {
