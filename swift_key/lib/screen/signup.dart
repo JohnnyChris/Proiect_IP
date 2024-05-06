@@ -1,11 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:swift_key/screen/home.dart';
-import 'package:swift_key/screen/login.dart';
 import 'package:swift_key/screen/login1.dart';
-import 'package:swift_key/screen/main_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
