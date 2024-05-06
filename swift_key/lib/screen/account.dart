@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 //import 'package:swift_key/Menu/navbar.dart';
 import 'package:swift_key/screen/login1.dart';
+import 'package:swift_key/screen/schedule.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -65,26 +66,37 @@ class _AccountScreenState extends State<AccountScreen> {
                 const SizedBox(height: 10),
 
                 //menu
+                //settings
                 ProfileMenuWidget(
                     title: "Settings",
                     icon: LineAwesomeIcons.cog,
                     onPressed: () {}),
 
+                //account details
                 ProfileMenuWidget(
                     title: "Account Details",
                     icon: LineAwesomeIcons.user_astronaut,
                     onPressed: () {}),
 
+                //schedule
                 ProfileMenuWidget(
                     title: "Schedule",
                     icon: LineAwesomeIcons.calendar,
-                    onPressed: () {}),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ScheduleScreen()),
+                      );
+                    }),
 
+                //information
                 ProfileMenuWidget(
                     title: "Information",
                     icon: LineAwesomeIcons.info,
                     onPressed: () {}),
 
+                //logout button
                 ProfileMenuWidget(
                     title: "Logout",
                     icon: LineAwesomeIcons.alternate_sign_out,
