@@ -14,18 +14,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Create your account",
+            style: Theme.of(context).textTheme.headlineMedium),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //title
-              Text("Let's create your account",
-                  style: Theme.of(context).textTheme.headlineMedium),
-              const SizedBox(height: 16),
-
               //Form
               Form(
                 child: Column(
@@ -61,6 +59,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       expands: false,
                       decoration: const InputDecoration(
                           labelText: "Username",
+                          prefixIcon: Icon(Iconsax.user_tag)),
+                    ),
+                    const SizedBox(height: 16),
+
+                    //cnp box
+                    TextFormField(
+                      expands: false,
+                      decoration: const InputDecoration(
+                          labelText: "CNP",
                           prefixIcon: Icon(Iconsax.user_edit)),
                     ),
                     const SizedBox(height: 16),

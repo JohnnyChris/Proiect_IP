@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:swift_key/screen/account_details.dart';
 //import 'package:swift_key/Menu/navbar.dart';
 import 'package:swift_key/screen/login1.dart';
 import 'package:swift_key/screen/schedule.dart';
@@ -76,7 +77,13 @@ class _AccountScreenState extends State<AccountScreen> {
                 ProfileMenuWidget(
                     title: "Account Details",
                     icon: LineAwesomeIcons.user_astronaut,
-                    onPressed: () {}),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AccountDetailsScreen()),
+                      );
+                    }),
 
                 //schedule
                 ProfileMenuWidget(
