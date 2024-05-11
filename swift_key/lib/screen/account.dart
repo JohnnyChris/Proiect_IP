@@ -6,6 +6,7 @@ import 'package:swift_key/screen/account_details.dart';
 //import 'package:swift_key/Menu/navbar.dart';
 import 'package:swift_key/screen/login1.dart';
 import 'package:swift_key/screen/schedule.dart';
+import 'package:swift_key/screen/settings.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -71,7 +72,13 @@ class _AccountScreenState extends State<AccountScreen> {
                 ProfileMenuWidget(
                     title: "Settings",
                     icon: LineAwesomeIcons.cog,
-                    onPressed: () {}),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SettingsScreen()),
+                      );
+                    }),
 
                 //account details
                 ProfileMenuWidget(
