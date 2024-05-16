@@ -13,6 +13,10 @@ class _HomeScreenState extends State<HomeScreen> {
   String profileImagePath = 'assets/avatar.png'; // Profile image path
   int selectedIndex = 0; // Selected index
   DateTime today = DateTime.now();
+
+  // List of texts for each button
+  final List<String> buttonLabels = ["Developer", "HR", "Tester", "Production"];
+
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
       today = day;
@@ -43,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
-                4,
+                buttonLabels.length,
                 (index) => GestureDetector(
                   onTap: () {
                     setState(() {
@@ -55,26 +59,46 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(10),
                     color: selectedIndex == index ? Colors.black : Colors.white,
                     child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Image.asset(
-                        profileImagePath,
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.cover,
-                        color: selectedIndex == index
-                            ? Colors.white
-                            : Colors.black,
+                      width: 65, // Fixed width for the square
+                      height: 80, // Fixed height for the square
+                      padding: EdgeInsets.all(5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/human.png',
+                            height: 50,
+                            width: 40,
+                            fit: BoxFit.cover,
+                            color: selectedIndex == index
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            buttonLabels[index], // Use the text from the list
+                            style: TextStyle(
+                              color: selectedIndex == index
+                                  ? Colors.white
+                                  : Colors.black,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                 ),
               ),
             ),
+            const SizedBox(height: 20.0),
             Container(
               child: TableCalendar(
                 rowHeight: 43,
                 headerStyle: HeaderStyle(
-                    formatButtonVisible: false, titleCentered: true),
+                  formatButtonVisible: false,
+                  titleCentered: true,
+                ),
                 availableGestures: AvailableGestures.all,
                 selectedDayPredicate: (day) => isSameDay(day, today),
                 focusedDay: today,
@@ -82,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 lastDay: DateTime.utc(2030, 10, 16),
                 onDaySelected: _onDaySelected,
               ),
-            )
+            ),
           ],
         ),
       ),
