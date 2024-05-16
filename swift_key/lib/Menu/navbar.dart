@@ -41,7 +41,7 @@ class _CustomBottomNavBarState extends ConsumerState<CustomBottomNavBar> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.red,
+        selectedItemColor: Colors.blue,
         onTap: _onItemTapped);
   }
 }
