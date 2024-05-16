@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swift_key/screen/customnavbar.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,6 +12,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String profileImagePath = 'assets/avatar.png'; // Profile image path
   int selectedIndex = 0; // Selected index
+  DateTime today = DateTime.now();
+  void _onDaySelected(DateTime day, DateTime focusedDay) {
+    setState(() {
+      today = day;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +28,18 @@ class _HomeScreenState extends State<HomeScreen> {
         profileImagePath: profileImagePath,
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+        margin: EdgeInsets.symmetric(vertical: 2.0, horizontal: 20.0),
         child: Column(
           children: [
             const Text(
               "Buna Alin,",
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 30.0,
+                fontSize: 25.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 10.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
@@ -63,6 +70,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+            Container(
+              child: TableCalendar(
+                rowHeight: 43,
+                headerStyle: HeaderStyle(
+                    formatButtonVisible: false, titleCentered: true),
+                availableGestures: AvailableGestures.all,
+                selectedDayPredicate: (day) => isSameDay(day, today),
+                focusedDay: today,
+                firstDay: DateTime.utc(2010, 10, 16),
+                lastDay: DateTime.utc(2030, 10, 16),
+                onDaySelected: _onDaySelected,
+              ),
+            )
           ],
         ),
       ),
