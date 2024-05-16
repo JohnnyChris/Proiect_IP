@@ -5,6 +5,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:swift_key/screen/access.dart';
 import 'package:swift_key/screen/account_details.dart';
 import 'package:swift_key/screen/customnavbar.dart';
+import 'package:swift_key/screen/customnavbar2.dart';
 import 'package:swift_key/screen/home.dart';
 //import 'package:swift_key/Menu/navbar.dart';
 import 'package:swift_key/screen/login1.dart';
@@ -23,11 +24,8 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomNavBar(
+      appBar: CustomNavBar2(
         title: "My Account",
-        onBackButtonPressed: () {
-          Navigator.of(context).pop();
-        },
         profileImagePath: 'assets/avatar.png',
       ),
       body: Center(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swift_key/screen/customnavbar.dart';
+import 'package:swift_key/screen/customnavbar2.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,9 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomNavBar(
+      appBar: CustomNavBar2(
         title: "",
-        onBackButtonPressed: () {},
         profileImagePath: profileImagePath,
       ),
       body: Container(

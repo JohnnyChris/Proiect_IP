@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:swift_key/screen/customnavbar.dart';
+import 'package:swift_key/screen/customnavbar2.dart';
 import 'package:swift_key/screen/home.dart';
 import 'package:swift_key/screen/main_screen.dart';
 
 class AccessScreen extends StatefulWidget {
-  const AccessScreen({super.key});
+  const AccessScreen({Key? key});
 
   @override
-  State<AccessScreen> createState() => _TestScreenState();
+  State<AccessScreen> createState() => _AccessScreenState();
 }
 
-class _TestScreenState extends State<AccessScreen> {
+class _AccessScreenState extends State<AccessScreen> {
   String profileImagePath = 'assets/avatar.png'; // Profile image path
   int selectedIndex = 0; // Selected index
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomNavBar(
-        title: "Access Page",
-        onBackButtonPressed: () {},
-        profileImagePath: profileImagePath,
+      appBar: CustomNavBar2(
+        title: "Access Page", profileImagePath: 'assets/avatar.png',
+
+        //automaticallyImplyLeading: false, // Remove back arrow button
       ),
       body: Container(
         margin: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
