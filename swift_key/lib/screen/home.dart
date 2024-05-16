@@ -13,10 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
   String profileImagePath = 'assets/avatar.png'; // Profile image path
   int selectedIndex = 0; // Selected index
   DateTime today = DateTime.now();
-
-  // List of texts for each button
-  final List<String> buttonLabels = ["Developer", "HR", "Tester", "Production"];
-
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
       today = day;
@@ -47,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
-                buttonLabels.length,
+                4,
                 (index) => GestureDetector(
                   onTap: () {
                     setState(() {
@@ -60,41 +56,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: selectedIndex == index ? Colors.black : Colors.white,
                     child: Container(
                       padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'assets/human.png',
-                            height: 50,
-                            width: 50,
-                            fit: BoxFit.cover,
-                            color: selectedIndex == index
-                                ? Colors.white
-                                : Colors.black,
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
-                            buttonLabels[index], // Use the text from the list
-                            style: TextStyle(
-                              color: selectedIndex == index
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
-                          ),
-                        ],
+                      child: Image.asset(
+                        profileImagePath,
+                        height: 50,
+                        width: 50,
+                        fit: BoxFit.cover,
+                        color: selectedIndex == index
+                            ? Colors.white
+                            : Colors.black,
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 20.0),
             Container(
               child: TableCalendar(
                 rowHeight: 43,
                 headerStyle: HeaderStyle(
-                  formatButtonVisible: false,
-                  titleCentered: true,
-                ),
+                    formatButtonVisible: false, titleCentered: true),
                 availableGestures: AvailableGestures.all,
                 selectedDayPredicate: (day) => isSameDay(day, today),
                 focusedDay: today,
@@ -102,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 lastDay: DateTime.utc(2030, 10, 16),
                 onDaySelected: _onDaySelected,
               ),
-            ),
+            )
           ],
         ),
       ),
