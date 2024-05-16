@@ -1,0 +1,5 @@
+USER = "ulthmvhrvmx0ykdw"
+PASSWORD = "NdJoZz8ELnBDE7N343nK"
+HOST = "byrowjk8t7iswcuuyell-mysql.services.clever-cloud.com"
+PORT = "3306"
+SCHEMA_NAME="byrowjk8t7iswcuuyell"
