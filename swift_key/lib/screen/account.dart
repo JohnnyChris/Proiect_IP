@@ -6,12 +6,14 @@ import 'package:swift_key/screen/access.dart';
 import 'package:swift_key/screen/account_details.dart';
 import 'package:swift_key/screen/customnavbar.dart';
 import 'package:swift_key/screen/customnavbar2.dart';
+import 'package:swift_key/screen/editprofile.dart';
 import 'package:swift_key/screen/home.dart';
 //import 'package:swift_key/Menu/navbar.dart';
 import 'package:swift_key/screen/login1.dart';
 import 'package:swift_key/screen/main_screen.dart';
 import 'package:swift_key/screen/schedule.dart';
 import 'package:swift_key/screen/settings.dart';
+import 'package:swift_key/screen/signup.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -59,7 +61,13 @@ class _AccountScreenState extends State<AccountScreen> {
                 SizedBox(
                   width: 150,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EditProfileScreen()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         side: BorderSide.none,

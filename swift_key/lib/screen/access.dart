@@ -39,8 +39,8 @@ class _AccessScreenState extends State<AccessScreen> {
                 height: 40,
               ),
               SizedBox(
-                width: 220,
-                height: 100,
+                width: 240,
+                height: 120,
                 child: ElevatedButton(
                   onPressed: () {},
                   child: Row(
@@ -52,7 +52,7 @@ class _AccessScreenState extends State<AccessScreen> {
                         height: 40, // Adjust height as needed
                       ),
                       SizedBox(width: 10),
-                      Text('Open Human Gate'),
+                      Text('Open Gate'),
                     ],
                   ),
                 ),
@@ -61,8 +61,8 @@ class _AccessScreenState extends State<AccessScreen> {
                 height: 30,
               ),
               SizedBox(
-                width: 220,
-                height: 100,
+                width: 240,
+                height: 120,
                 child: ElevatedButton(
                   onPressed: () {},
                   child: Row(
@@ -75,6 +75,28 @@ class _AccessScreenState extends State<AccessScreen> {
                       ),
                       SizedBox(width: 10),
                       Text('Open Car Gate'),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                width: 240,
+                height: 120,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/clock.png', // Replace with your image asset path
+                        width: 40, // Adjust width as needed
+                        height: 40, // Adjust height as needed
+                      ),
+                      SizedBox(width: 10),
+                      Text('End Work Time'),
                     ],
                   ),
                 ),
