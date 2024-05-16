@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:swift_key/screen/customnavbar.dart';
 import 'package:swift_key/screen/customnavbar2.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:swift_key/screen/schedule.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,6 +22,14 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       today = day;
     });
+
+    // Navigate to the SchedulePage when a day is selected
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ScheduleScreen(),
+      ),
+    );
   }
 
   @override
