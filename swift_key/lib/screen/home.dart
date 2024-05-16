@@ -59,13 +59,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(10),
                     color: selectedIndex == index ? Colors.black : Colors.white,
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      width: 65, // Fixed width for the square
+                      height: 80, // Fixed height for the square
+                      padding: EdgeInsets.all(5),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
                             'assets/human.png',
                             height: 50,
-                            width: 50,
+                            width: 40,
                             fit: BoxFit.cover,
                             color: selectedIndex == index
                                 ? Colors.white
@@ -78,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: selectedIndex == index
                                   ? Colors.white
                                   : Colors.black,
+                              fontSize: 10,
                             ),
                           ),
                         ],
