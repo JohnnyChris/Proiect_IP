@@ -2,9 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:swift_key/screen/access.dart';
 import 'package:swift_key/screen/account_details.dart';
+import 'package:swift_key/screen/customnavbar.dart';
+import 'package:swift_key/screen/home.dart';
 //import 'package:swift_key/Menu/navbar.dart';
 import 'package:swift_key/screen/login1.dart';
+import 'package:swift_key/screen/main_screen.dart';
 import 'package:swift_key/screen/schedule.dart';
 import 'package:swift_key/screen/settings.dart';
 
@@ -19,9 +23,12 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("My Account",
-            style: Theme.of(context).textTheme.headlineMedium),
+      appBar: CustomNavBar(
+        title: "My Account",
+        onBackButtonPressed: () {
+          Navigator.of(context).pop();
+        },
+        profileImagePath: 'assets/avatar.png',
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -34,7 +41,7 @@ class _AccountScreenState extends State<AccountScreen> {
                   height: 120,
                   child: ClipOval(
                     child: Image.asset(
-                      "assets/logo.png",
+                      "assets/avatar.png",
                       fit: BoxFit.cover,
                     ),
                   ),

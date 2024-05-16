@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:swift_key/screen/customnavbar.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -35,8 +36,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Settings", style: Theme.of(context).textTheme.headline6),
+      appBar: CustomNavBar(
+        title: "Settings",
+        onBackButtonPressed: () {
+          Navigator.of(context).pop();
+        },
+        profileImagePath: 'assets/avatar.png',
       ),
       body: Container(
         padding: const EdgeInsets.all(10),

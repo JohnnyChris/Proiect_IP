@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:swift_key/screen/customnavbar.dart';
+import 'package:swift_key/screen/home.dart';
+import 'package:swift_key/screen/main_screen.dart';
 
 class AccountDetailsScreen extends StatefulWidget {
   const AccountDetailsScreen({super.key});
@@ -12,13 +15,17 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("My Account Details",
-            style: Theme.of(context).textTheme.headlineSmall),
+      appBar: CustomNavBar(
+        title: "Account Details",
+        onBackButtonPressed: () {
+          Navigator.of(context)
+              .pop(); // Navigate back when the back button is pressed
+        },
+        profileImagePath: 'assets/avatar.png',
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               SizedBox(
@@ -30,7 +37,7 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
                       height: 120,
                       child: ClipOval(
                         child: Image.asset(
-                          "assets/logo.png",
+                          "assets/avatar.png",
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -38,7 +45,7 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
                     const SizedBox(height: 10),
                     TextButton(
                       onPressed: () {},
-                      child: Text("Change picture"),
+                      child: const Text("Change picture"),
                     ),
                     const SizedBox(height: 10),
                   ],
@@ -48,63 +55,63 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
                 "Profile information",
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "First Name",
                 value: "Alin-Jonathan",
                 onPressed: () {},
                 icon: LineAwesomeIcons.user_astronaut,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Last Name",
                 value: "Rogojan",
                 onPressed: () {},
                 icon: LineAwesomeIcons.user_1,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "CNP",
                 value: "5030128303941",
                 onPressed: () {},
                 icon: LineAwesomeIcons.identification_badge,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Badge ID",
                 value: "#123456",
                 onPressed: () {},
                 icon: LineAwesomeIcons.identification_card,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "E-mail",
                 value: "alin.rogojan@student.upt.ro",
                 onPressed: () {},
                 icon: LineAwesomeIcons.mail_bulk,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Phone nr",
                 value: "0720686200",
                 onPressed: () {},
                 icon: LineAwesomeIcons.mobile_phone,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Departament",
                 value: "Fundraising",
                 onPressed: () {},
                 icon: LineAwesomeIcons.damaged_house,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Car plate",
                 value: "SM98RJR",
                 onPressed: () {},
                 icon: LineAwesomeIcons.caret_square_down,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Access level",
                 value: "Auto",
@@ -137,7 +144,7 @@ class AccountDetailsWidget extends StatelessWidget {
     return Row(
       children: [
         Icon(icon),
-        SizedBox(width: 6),
+        const SizedBox(width: 6),
         Expanded(
           flex: 5,
           child: Text(title,
