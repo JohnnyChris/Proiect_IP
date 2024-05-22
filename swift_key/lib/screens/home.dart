@@ -116,6 +116,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 firstDay: DateTime.utc(2010, 10, 16),
                 lastDay: DateTime.utc(2030, 10, 16),
                 onDaySelected: _onDaySelected,
+                calendarStyle: CalendarStyle(
+                    selectedDecoration: BoxDecoration(
+                        color: AppColors.blue, shape: BoxShape.circle),
+                    todayDecoration: BoxDecoration(
+                        color: AppColors.blue.withOpacity(0.5),
+                        shape: BoxShape.circle)),
               ),
             ),
           ],

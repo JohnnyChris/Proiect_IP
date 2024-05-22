@@ -106,6 +106,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
 
                       //sign in button
                       SizedBox(
+                        height: 60,
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
@@ -116,8 +117,8 @@ class _LoginScreen1State extends State<LoginScreen1> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                AppColors.blue, // culoarea de fundal
+                            backgroundColor: AppColors.blue,
+                            // culoarea de fundal
                           ),
                           child: const Text(
                             "Sign in",
@@ -133,6 +134,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
 
                       //create account button
                       SizedBox(
+                        height: 60,
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {

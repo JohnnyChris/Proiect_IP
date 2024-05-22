@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:swift_key/constants/colors.dart';
 import 'package:swift_key/screens/login1.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -125,6 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                     //sign up button
                     SizedBox(
+                      height: 60,
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
@@ -134,7 +136,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 builder: (context) => const LoginScreen1()),
                           );
                         },
-                        child: const Text("Create account"),
+                        child: const Text(
+                          "Create account",
+                          style: TextStyle(color: AppColors.blue),
+                        ),
                       ),
                     ),
                   ],
