@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:swift_key/screen/main_screen.dart';
-import 'package:swift_key/screen/signup.dart';
+import 'package:swift_key/constants/colors.dart';
+import 'package:swift_key/screens/main_screen.dart';
+import 'package:swift_key/screens/signup.dart';
 
 class LoginScreen1 extends StatefulWidget {
   const LoginScreen1({super.key});
@@ -93,7 +94,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
                                 },
                                 child: const Text(
                                   "Forgot password",
-                                  style: TextStyle(color: Colors.blue),
+                                  style: TextStyle(color: AppColors.blue),
                                 ),
                               ),
                             ),
@@ -115,12 +116,13 @@ class _LoginScreen1State extends State<LoginScreen1> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue, // culoarea de fundal
+                            backgroundColor:
+                                AppColors.blue, // culoarea de fundal
                           ),
                           child: const Text(
                             "Sign in",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.white,
                             ),
                           ),
                         ),
@@ -143,7 +145,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
                           child: const Text(
                             "Create account",
                             style: TextStyle(
-                              color: Colors.blue,
+                              color: AppColors.blue,
                             ),
                           ),
                         ),

@@ -1,19 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:swift_key/screen/access.dart';
-import 'package:swift_key/screen/account_details.dart';
-import 'package:swift_key/screen/customnavbar2.dart';
-import 'package:swift_key/screen/editprofile.dart';
-import 'package:swift_key/screen/home.dart';
-import 'package:swift_key/screen/information.dart';
-//import 'package:swift_key/Menu/navbar.dart';
-import 'package:swift_key/screen/login1.dart';
-import 'package:swift_key/screen/main_screen.dart';
-import 'package:swift_key/screen/schedule.dart';
-import 'package:swift_key/screen/settings.dart';
-import 'package:swift_key/screen/signup.dart';
+import 'package:swift_key/constants/colors.dart';
+import 'package:swift_key/screens/account_details.dart';
+import 'package:swift_key/widgets/customnavbar2.dart';
+import 'package:swift_key/screens/editprofile.dart';
+import 'package:swift_key/screens/information.dart';
+import 'package:swift_key/screens/login1.dart';
+import 'package:swift_key/screens/schedule.dart';
+import 'package:swift_key/screens/settings.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -68,12 +62,12 @@ class _AccountScreenState extends State<AccountScreen> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: AppColors.blue,
                         side: BorderSide.none,
                         shape: StadiumBorder()),
                     child: const Text(
                       "Edit profile",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: AppColors.white),
                     ),
                   ),
                 ),
@@ -132,7 +126,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 ProfileMenuWidget(
                     title: "Logout",
                     icon: LineAwesomeIcons.alternate_sign_out,
-                    textColor: Colors.red,
+                    textColor: AppColors.red,
                     endIcon: false,
                     onPressed: () {
                       Navigator.push(
@@ -175,9 +169,9 @@ class ProfileMenuWidget extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: Colors.blue.withOpacity(0.1),
+          color: AppColors.lightBlue,
         ),
-        child: Icon(icon, color: Colors.blue),
+        child: Icon(icon, color: AppColors.blue),
       ),
       title: Text(title,
           style:
@@ -187,11 +181,10 @@ class ProfileMenuWidget extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.grey.withOpacity(0.1),
-              ),
-              child:
-                  const Icon(LineAwesomeIcons.angle_right, color: Colors.grey),
+                  borderRadius: BorderRadius.circular(100),
+                  color: AppColors.lightGrey),
+              child: const Icon(LineAwesomeIcons.angle_right,
+                  color: AppColors.grey),
             )
           : null,
     );

@@ -1,8 +1,7 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter/widgets.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:swift_key/screen/customnavbar2.dart';
+import 'package:swift_key/constants/colors.dart';
+import 'package:swift_key/widgets/customnavbar2.dart';
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({super.key});
@@ -27,7 +26,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           child: Container(
             margin: const EdgeInsets.fromLTRB(16.0, 6.0, 16.0, 6.0),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black), // Add border here
+              border: Border.all(color: AppColors.black), // Add border here
               borderRadius: BorderRadius.circular(10), // Add border radius here
             ),
             padding: const EdgeInsets.all(16.0),
@@ -45,10 +44,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                         children: [
                           Text(
                             "Date",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .apply(color: Colors.blue, fontWeightDelta: 1),
+                            style: Theme.of(context).textTheme.bodyLarge!.apply(
+                                color: AppColors.blue, fontWeightDelta: 1),
                           ),
                           Text("07 nov 2024",
                               style: Theme.of(context).textTheme.bodySmall),

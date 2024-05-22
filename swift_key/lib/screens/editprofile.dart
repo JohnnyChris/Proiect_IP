@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:swift_key/screen/home.dart';
-import 'package:swift_key/screen/login.dart';
-import 'package:swift_key/screen/login1.dart';
+import 'package:swift_key/screens/login1.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});

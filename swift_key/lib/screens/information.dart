@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:swift_key/screen/customnavbar2.dart';
+import 'package:swift_key/widgets/customnavbar2.dart';
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({Key? key});

@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:swift_key/screen/main_screen.dart';
+import 'package:swift_key/constants/colors.dart';
+import 'package:swift_key/screens/main_screen.dart';
 
 class CustomNavBar2 extends ConsumerStatefulWidget
     implements PreferredSizeWidget {
@@ -29,7 +28,7 @@ class _CustomNavBar2State extends ConsumerState<CustomNavBar2> {
     return AppBar(
       title: Text(
         widget.title,
-        style: TextStyle(color: Colors.black),
+        style: TextStyle(color: AppColors.black),
       ),
       automaticallyImplyLeading: widget.backButton,
       actions: [

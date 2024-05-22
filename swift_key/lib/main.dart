@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-//import 'package:swift_key/screen/login.dart';
-import 'package:swift_key/screen/login1.dart';
-//import 'package:swift_key/screen/main_screen.dart';
-//import 'package:swift_key/screen/login.dart';
+import 'package:swift_key/screens/login1.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
