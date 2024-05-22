@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:swift_key/Menu/navbar.dart';
 import 'package:swift_key/screen/account.dart';
 import 'package:swift_key/screen/home.dart';
-import 'package:swift_key/screen/login.dart';
-import 'package:swift_key/screen/login1.dart';
 
 import 'access.dart';
 
@@ -36,7 +33,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: getFragment(ref.watch(bottomNavigatorIndex)),
-      bottomNavigationBar: CustomBottomNavBar(),
+      bottomNavigationBar: const CustomBottomNavBar(),
     );
   }
 }

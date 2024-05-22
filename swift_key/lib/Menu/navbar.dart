@@ -7,7 +7,7 @@ import 'package:swift_key/screen/main_screen.dart';
 //import 'package:swift_key/screen/access.dart';
 
 class CustomBottomNavBar extends ConsumerStatefulWidget {
-  const CustomBottomNavBar({Key? key}) : super(key: key);
+  const CustomBottomNavBar({super.key});
 
   @override
   ConsumerState<CustomBottomNavBar> createState() => _CustomBottomNavBarState();

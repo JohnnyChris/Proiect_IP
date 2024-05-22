@@ -6,7 +6,7 @@ import 'package:swift_key/screen/login1.dart';
 //import 'package:swift_key/screen/login.dart';
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

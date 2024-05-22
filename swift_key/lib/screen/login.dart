@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swift_key/screen/main_screen.dart';
 //import 'package:swift_key/screen/home.dart';
@@ -15,14 +14,14 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   //color: Colors.indigo, // To see the difference between the image's original size and the frame
                   height: 100,
                   width: 205,
@@ -78,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 88.0,
                 ),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: RawMaterialButton(
                     fillColor: const Color(0xFF0069FE),
