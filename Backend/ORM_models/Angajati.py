@@ -1,4 +1,4 @@
-from sqlalchemy import BLOB, inspect
+from sqlalchemy import BLOB, ForeignKey, inspect
 from typing import Any, Optional
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import Column, Integer, String
@@ -10,11 +10,11 @@ class Angajati(Base):
     __tablename__="Angajati"
     __table_args__ = {"schema": SCHEMA_NAME}
     ID_Angajat = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    ID_Utilizator= Column(Integer, nullable=True)
+    ID_Utilizator= Column(Integer, ForeignKey(f'{SCHEMA_NAME}.Utilizatori.ID_Utilizator'), nullable=True)
     Nume = Column(String(50), nullable=True)
     Prenume = Column(String(50), nullable=True)
     CNP = Column(String(13), nullable=True)
-    # Poza = Column(nullable=True)
+    Poza = Column(String(50),nullable=True)
     NumarLegitimatie= Column(Integer,nullable=True)
     Divizia=Column(String(50),nullable=True)
     IntervaleAcces=Column(String(100),nullable=True)
