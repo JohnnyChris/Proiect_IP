@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-//import 'package:swift_key/screen/account.dart';
-import 'package:swift_key/screen/main_screen.dart';
-
-//import 'package:swift_key/screen/home.dart';
-//import 'package:swift_key/screen/access.dart';
+import 'package:swift_key/constants/colors.dart';
+import 'package:swift_key/screens/main_screen.dart';
 
 class CustomBottomNavBar extends ConsumerStatefulWidget {
   const CustomBottomNavBar({Key? key}) : super(key: key);
@@ -41,7 +38,7 @@ class _CustomBottomNavBarState extends ConsumerState<CustomBottomNavBar> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: AppColors.blue,
         onTap: _onItemTapped);
   }
 }

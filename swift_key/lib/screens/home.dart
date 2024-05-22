@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:swift_key/screen/customnavbar2.dart';
+import 'package:swift_key/constants/colors.dart';
+import 'package:swift_key/widgets/customnavbar2.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:swift_key/screen/schedule.dart';
+import 'package:swift_key/screens/schedule.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -46,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const Text(
               "Buna Alin,",
               style: TextStyle(
-                color: Colors.black,
+                color: AppColors.black,
                 fontSize: 25.0,
                 fontWeight: FontWeight.bold,
               ),
@@ -65,7 +66,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Material(
                     elevation: 5.0,
                     borderRadius: BorderRadius.circular(10),
-                    color: selectedIndex == index ? Colors.black : Colors.white,
+                    color: selectedIndex == index
+                        ? AppColors.black
+                        : AppColors.white,
                     child: Container(
                       width: 65, // Fixed width for the square
                       height: 80, // Fixed height for the square
@@ -79,16 +82,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 40,
                             fit: BoxFit.cover,
                             color: selectedIndex == index
-                                ? Colors.white
-                                : Colors.black,
+                                ? AppColors.white
+                                : AppColors.black,
                           ),
                           const SizedBox(height: 5),
                           Text(
                             buttonLabels[index], // Use the text from the list
                             style: TextStyle(
                               color: selectedIndex == index
-                                  ? Colors.white
-                                  : Colors.black,
+                                  ? AppColors.white
+                                  : AppColors.black,
                               fontSize: 10,
                             ),
                           ),

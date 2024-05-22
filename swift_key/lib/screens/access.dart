@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:swift_key/screen/customnavbar2.dart';
-import 'package:swift_key/screen/home.dart';
-import 'package:swift_key/screen/main_screen.dart';
+import 'package:swift_key/widgets/customnavbar2.dart';
+import 'package:swift_key/screens/home.dart';
+import 'package:swift_key/screens/main_screen.dart';
 
 class AccessScreen extends StatefulWidget {
   const AccessScreen({Key? key});
