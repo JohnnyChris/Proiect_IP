@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:swift_key/screen/customnavbar.dart';
+import 'package:swift_key/screen/customnavbar2.dart';
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({Key? key});
@@ -15,13 +15,10 @@ class _InfoScreenState extends State<InfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomNavBar(
+        appBar: CustomNavBar2(
           title: "Information",
-          onBackButtonPressed: () {
-            Navigator.of(context)
-                .pop(); // Navigate back when the back button is pressed
-          },
           profileImagePath: 'assets/avatar.png',
+          backButton: true,
         ),
         body: Container(
           margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
@@ -34,9 +31,12 @@ class _InfoScreenState extends State<InfoScreen> {
                 'assets/SwiftkeyA.png', // Replace with your image asset path
                 // Adjust height as needed
               ),
-              Text(
-                'SwiftKey Access is an app developed by Echipa Petarda SRL. This app is still a prototype, so please report any bugs and we will do our best to solve them as soon as posible.\n\nAll rights reserved by\nEchipa Petarda SRL.',
-                style: TextStyle(fontSize: 15),
+              Padding(
+                padding: const EdgeInsets.all(7.0),
+                child: Text(
+                  'SwiftKey Access is an app developed by Echipa Petarda SRL. This app is still a prototype, so please report any bugs and we will do our best to solve them as soon as posible.\n\nAll rights reserved by\nEchipa Petarda SRL.',
+                  style: TextStyle(fontSize: 15),
+                ),
               ),
             ],
           ),

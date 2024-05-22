@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:swift_key/screen/access.dart';
 import 'package:swift_key/screen/account_details.dart';
-import 'package:swift_key/screen/customnavbar.dart';
 import 'package:swift_key/screen/customnavbar2.dart';
 import 'package:swift_key/screen/editprofile.dart';
 import 'package:swift_key/screen/home.dart';
@@ -29,7 +28,6 @@ class _AccountScreenState extends State<AccountScreen> {
     return Scaffold(
       appBar: CustomNavBar2(
         title: "My Account",
-        profileImagePath: 'assets/avatar.png',
       ),
       body: Center(
         child: SingleChildScrollView(

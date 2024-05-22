@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter/widgets.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:swift_key/screen/customnavbar.dart';
+import 'package:swift_key/screen/customnavbar2.dart';
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({super.key});
@@ -15,11 +15,9 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomNavBar(
+      appBar: CustomNavBar2(
         title: "Schedule",
-        onBackButtonPressed: () {
-          Navigator.of(context).pop();
-        },
+        backButton: true,
         profileImagePath: 'assets/avatar.png',
       ),
       body: ListView.separated(
