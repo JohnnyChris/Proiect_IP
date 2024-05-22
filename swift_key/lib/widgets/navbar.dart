@@ -4,7 +4,7 @@ import 'package:swift_key/constants/colors.dart';
 import 'package:swift_key/screens/main_screen.dart';
 
 class CustomBottomNavBar extends ConsumerStatefulWidget {
-  const CustomBottomNavBar({Key? key}) : super(key: key);
+  const CustomBottomNavBar({super.key});
 
   @override
   ConsumerState<CustomBottomNavBar> createState() => _CustomBottomNavBarState();

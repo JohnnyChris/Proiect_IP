@@ -60,7 +60,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
                         controller: _passwordController,
                         obscureText: _obscureText,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.password_check),
+                          prefixIcon: const Icon(Iconsax.password_check),
                           labelText: "Password",
                           suffixIcon: IconButton(
                             icon: Icon(_obscureText

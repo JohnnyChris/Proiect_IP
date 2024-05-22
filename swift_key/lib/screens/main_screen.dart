@@ -34,7 +34,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: getFragment(ref.watch(bottomNavigatorIndex)),
-      bottomNavigationBar: CustomBottomNavBar(),
+      bottomNavigationBar: const CustomBottomNavBar(),
     );
   }
 }

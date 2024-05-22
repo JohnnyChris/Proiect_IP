@@ -19,7 +19,7 @@ def index(request:Request):
     return RedirectResponse(
         f"{request.base_url}docs", status_code = status.HTTP_303_SEE_OTHER
     )
-
+    
 app.add_middleware(CORSMiddleware,
                     allow_origins = [""],
                     allow_methods = [""],
