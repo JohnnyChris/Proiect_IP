@@ -8,6 +8,7 @@ import 'package:swift_key/screen/customnavbar.dart';
 import 'package:swift_key/screen/customnavbar2.dart';
 import 'package:swift_key/screen/editprofile.dart';
 import 'package:swift_key/screen/home.dart';
+import 'package:swift_key/screen/information.dart';
 //import 'package:swift_key/Menu/navbar.dart';
 import 'package:swift_key/screen/login1.dart';
 import 'package:swift_key/screen/main_screen.dart';
@@ -121,7 +122,13 @@ class _AccountScreenState extends State<AccountScreen> {
                 ProfileMenuWidget(
                     title: "Information",
                     icon: LineAwesomeIcons.info,
-                    onPressed: () {}),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const InfoScreen()),
+                      );
+                    }),
 
                 //logout button
                 ProfileMenuWidget(
