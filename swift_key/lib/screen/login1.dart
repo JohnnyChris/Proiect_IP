@@ -50,7 +50,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
                       TextFormField(
                         decoration: const InputDecoration(
                           prefixIcon: Icon(Iconsax.direct_right),
-                          labelText: "email",
+                          labelText: "Username",
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -92,7 +92,10 @@ class _LoginScreen1State extends State<LoginScreen1> {
                                             const MainScreen()),
                                   );
                                 },
-                                child: const Text("Forgot password"),
+                                child: const Text(
+                                  "Forgot password",
+                                  style: TextStyle(color: Colors.blue),
+                                ),
                               ),
                             ),
                           ],
@@ -115,8 +118,16 @@ class _LoginScreen1State extends State<LoginScreen1> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue, // culoarea de fundal
                           ),
-                          child: const Text("Sign in"),
+                          child: const Text(
+                            "Sign in",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 20,
                       ),
 
                       //create account button
@@ -130,7 +141,12 @@ class _LoginScreen1State extends State<LoginScreen1> {
                                   builder: (context) => const SignUpScreen()),
                             );
                           },
-                          child: const Text("Create account"),
+                          child: const Text(
+                            "Create account",
+                            style: TextStyle(
+                              color: Colors.blue,
+                            ),
+                          ),
                         ),
                       ),
                     ],
