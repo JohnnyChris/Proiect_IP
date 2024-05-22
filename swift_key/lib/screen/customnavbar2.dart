@@ -1,33 +1,54 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:swift_key/screen/main_screen.dart';
 
-class CustomNavBar2 extends StatelessWidget implements PreferredSizeWidget {
+class CustomNavBar2 extends ConsumerStatefulWidget
+    implements PreferredSizeWidget {
   final String title;
-  final String profileImagePath;
+  final String? profileImagePath;
+  final bool backButton;
 
   CustomNavBar2({
     required this.title,
-    required this.profileImagePath,
+    this.profileImagePath,
+    this.backButton = false,
   });
 
+  @override
+  ConsumerState<CustomNavBar2> createState() => _CustomNavBar2State();
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+}
+
+class _CustomNavBar2State extends ConsumerState<CustomNavBar2> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(
-        title,
+        widget.title,
         style: TextStyle(color: Colors.black),
       ),
-      automaticallyImplyLeading: false, // Remove the back arrow
+      automaticallyImplyLeading: widget.backButton,
       actions: [
-        CircleAvatar(
-          backgroundImage: AssetImage(profileImagePath),
-          radius: 20,
-        ),
+        if (widget.profileImagePath != null) ...[
+          GestureDetector(
+            onTap: () {
+              ref.read(bottomNavigatorIndex.notifier).update((state) => 2);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MainScreen()));
+            },
+            child: CircleAvatar(
+              backgroundImage: AssetImage(widget.profileImagePath!),
+              radius: 20,
+            ),
+          ),
+        ],
         SizedBox(width: 16),
       ],
       //backgroundColor: Colors.blue, // Customize the background color as needed
     );
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }

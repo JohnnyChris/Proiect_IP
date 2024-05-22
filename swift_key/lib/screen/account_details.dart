@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:swift_key/screen/customnavbar.dart';
+import 'package:swift_key/screen/customnavbar2.dart';
 import 'package:swift_key/screen/home.dart';
 import 'package:swift_key/screen/main_screen.dart';
 
@@ -15,13 +15,10 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomNavBar(
+      appBar: CustomNavBar2(
         title: "Account Details",
-        onBackButtonPressed: () {
-          Navigator.of(context)
-              .pop(); // Navigate back when the back button is pressed
-        },
         profileImagePath: 'assets/avatar.png',
+        backButton: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -147,15 +144,17 @@ class AccountDetailsWidget extends StatelessWidget {
         const SizedBox(width: 6),
         Expanded(
           flex: 5,
-          child: Text(title,
-              style: Theme.of(context).textTheme.bodyMedium,
-              overflow: TextOverflow.ellipsis),
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
         ),
         Expanded(
           flex: 10,
-          child: Text(value,
-              style: Theme.of(context).textTheme.bodyLarge,
-              overflow: TextOverflow.ellipsis),
+          child: Text(
+            value,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
         ),
       ],
     );
