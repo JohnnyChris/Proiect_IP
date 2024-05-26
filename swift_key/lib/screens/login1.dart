@@ -23,7 +23,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
     final password = _passwordController.text;
 
     final response = await http.post(
-      Uri.parse('http://127.0.0.1:8000/auth/token'),
+      Uri.parse('http://192.168.1.140:8000/auth/token'),
       headers: <String, String>{
         'Content-Type': 'application/x-www-form-urlencoded',
       },
