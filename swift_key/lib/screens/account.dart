@@ -129,10 +129,11 @@ class _AccountScreenState extends State<AccountScreen> {
                     textColor: AppColors.red,
                     endIcon: false,
                     onPressed: () {
-                      Navigator.push(
-                        context,
+                      Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
-                            builder: (context) => const LoginScreen1()),
+                          builder: (BuildContext context) => LoginScreen1(),
+                        ),
+                        (Route route) => false,
                       );
                     }),
               ],
