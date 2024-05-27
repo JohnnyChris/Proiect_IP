@@ -112,7 +112,6 @@ class _LoginScreen1State extends State<LoginScreen1> {
                         obscureText: _obscureText,
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.lock),
-                          labelText: "Password",
                           suffixIcon: IconButton(
                             icon: Icon(_obscureText
                                 ? Icons.visibility_off
@@ -156,7 +155,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
                           child: const Text(
                             "Sign in",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.white,
                             ),
                           ),
                         ),
@@ -167,6 +166,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
 
                       //create account button
                       SizedBox(
+                        height: 60,
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
@@ -179,7 +179,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
                           child: const Text(
                             "Create account",
                             style: TextStyle(
-                              color: Colors.blue,
+                              color: AppColors.blue,
                             ),
                           ),
                         ),
