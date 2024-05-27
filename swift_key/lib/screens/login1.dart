@@ -1,19 +1,69 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:swift_key/constants/colors.dart';
 import 'package:swift_key/screens/main_screen.dart';
 import 'package:swift_key/screens/signup.dart';
+import 'package:http/http.dart' as http;
 
 class LoginScreen1 extends StatefulWidget {
-  const LoginScreen1({super.key});
+  const LoginScreen1({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen1> createState() => _LoginScreen1State();
 }
 
 class _LoginScreen1State extends State<LoginScreen1> {
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscureText = true;
+
+//login
+  Future<void> _login() async {
+    final username = _usernameController.text;
+    final password = _passwordController.text;
+
+    final response = await http.post(
+      Uri.parse('http://192.168.1.10:8000/auth/token'),
+      headers: <String, String>{
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: <String, String>{
+        'username': username,
+        'password': password,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      // Handle successful login, e.g., store token, navigate to another page
+      final responseData = json.decode(response.body);
+      final accessToken = responseData['access_token'];
+      print('Access Token: $accessToken');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MainScreen()),
+      );
+    } else {
+      // Handle login failure
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Login Failed'),
+            content: Text('Invalid username or password.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +98,9 @@ class _LoginScreen1State extends State<LoginScreen1> {
                     children: [
                       //email
                       TextFormField(
+                        controller: _usernameController,
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Iconsax.direct_right),
+                          prefixIcon: Icon(Icons.email),
                           labelText: "Username",
                         ),
                       ),
@@ -60,8 +111,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
                         controller: _passwordController,
                         obscureText: _obscureText,
                         decoration: InputDecoration(
-                          prefixIcon: const Icon(Iconsax.password_check),
-                          labelText: "Password",
+                          prefixIcon: const Icon(Icons.lock),
                           suffixIcon: IconButton(
                             icon: Icon(_obscureText
                                 ? Icons.visibility_off
@@ -79,26 +129,14 @@ class _LoginScreen1State extends State<LoginScreen1> {
                       //forgot password button
                       SizedBox(
                         width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const MainScreen()),
-                                  );
-                                },
-                                child: const Text(
-                                  "Forgot password",
-                                  style: TextStyle(color: AppColors.blue),
-                                ),
-                              ),
-                            ),
-                          ],
+                        child: TextButton(
+                          onPressed: () {
+                            // Implement forgot password functionality here
+                          },
+                          child: const Text(
+                            "Forgot password",
+                            style: TextStyle(color: Colors.blue),
+                          ),
                         ),
                       ),
 
@@ -106,19 +144,13 @@ class _LoginScreen1State extends State<LoginScreen1> {
 
                       //sign in button
                       SizedBox(
-                        height: 60,
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const MainScreen()),
-                            );
+                            _login();
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.blue,
-                            // culoarea de fundal
+                            backgroundColor: Colors.blue,
                           ),
                           child: const Text(
                             "Sign in",
