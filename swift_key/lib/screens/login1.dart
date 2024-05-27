@@ -17,9 +17,13 @@ class _LoginScreen1State extends State<LoginScreen1> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscureText = true;
+  bool isLoading = false;
 
 //login
   Future<void> _login() async {
+    setState(() {
+      isLoading = true;
+    });
     final username = _usernameController.text;
     final password = _passwordController.text;
 
@@ -33,7 +37,9 @@ class _LoginScreen1State extends State<LoginScreen1> {
         'password': password,
       },
     );
-
+    setState(() {
+      isLoading = false;
+    });
     if (response.statusCode == 200) {
       // Handle successful login, e.g., store token, navigate to another page
       final responseData = json.decode(response.body);
@@ -76,120 +82,132 @@ class _LoginScreen1State extends State<LoginScreen1> {
             bottom: 24,
             right: 24,
           ),
-          child: Column(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    "assets/SwiftkeyA.png",
-                    fit: BoxFit.cover,
-                  ),
-                  Text(
-                    "Welcome back,",
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                ],
-              ),
-              Form(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24),
-                  child: Column(
-                    children: [
-                      //email
-                      TextFormField(
-                        controller: _usernameController,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.email),
-                          labelText: "Username",
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-
-                      //password
-                      TextFormField(
-                        controller: _passwordController,
-                        obscureText: _obscureText,
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.lock),
-                          suffixIcon: IconButton(
-                            icon: Icon(_obscureText
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                            onPressed: () {
-                              setState(() {
-                                _obscureText = !_obscureText;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-
-                      //forgot password button
-                      SizedBox(
-                        width: double.infinity,
-                        child: TextButton(
-                          onPressed: () {
-                            // Implement forgot password functionality here
-                          },
-                          child: const Text(
-                            "Forgot password",
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(height: 16),
-
-                      //sign in button
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            _login();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                          ),
-                          child: const Text(
-                            "Sign in",
-                            style: TextStyle(
-                              color: AppColors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-
-                      //create account button
-                      SizedBox(
-                        height: 60,
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const SignUpScreen()),
-                            );
-                          },
-                          child: const Text(
-                            "Create account",
-                            style: TextStyle(
-                              color: AppColors.blue,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+          child: IndexedStack(
+              alignment: Alignment.center,
+              index: isLoading ? 0 : 1,
+              children: [
+                const CircularProgressIndicator(
+                  color: Colors.blue,
                 ),
-              ),
-            ],
-          ),
+                Column(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          "assets/SwiftkeyA.png",
+                          fit: BoxFit.cover,
+                        ),
+                        Text(
+                          "Welcome back,",
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                      ],
+                    ),
+                    Form(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 24),
+                        child: Column(
+                          children: [
+                            //email
+                            TextFormField(
+                              controller: _usernameController,
+                              decoration: const InputDecoration(
+                                prefixIcon: Icon(Icons.email),
+                                labelText: "Username",
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+
+                            //password
+                            TextFormField(
+                              controller: _passwordController,
+                              obscureText: _obscureText,
+                              decoration: InputDecoration(
+                                prefixIcon: const Icon(Icons.lock),
+                                labelText: "Password",
+                                suffixIcon: IconButton(
+                                  icon: Icon(_obscureText
+                                      ? Icons.visibility_off
+                                      : Icons.visibility),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureText = !_obscureText;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+
+                            //forgot password button
+                            SizedBox(
+                              width: double.infinity,
+                              child: TextButton(
+                                onPressed: () {
+                                  // Implement forgot password functionality here
+                                },
+                                child: const Text(
+                                  "Forgot password",
+                                  style: TextStyle(color: Colors.blue),
+                                ),
+                              ),
+                            ),
+
+                            const SizedBox(height: 16),
+
+                            //sign in button
+                            SizedBox(
+                              height: 60,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _login();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                ),
+                                child: const Text(
+                                  "Sign in",
+                                  style: TextStyle(
+                                    color: AppColors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+
+                            //create account button
+                            SizedBox(
+                              height: 60,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SignUpScreen()),
+                                  );
+                                },
+                                child: const Text(
+                                  "Create account",
+                                  style: TextStyle(
+                                    color: AppColors.blue,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ]),
         ),
       ),
     );
