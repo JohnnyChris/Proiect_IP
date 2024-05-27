@@ -17,6 +17,27 @@ class MainScreen extends ConsumerStatefulWidget {
 }
 
 class _MainScreenState extends ConsumerState<MainScreen> {
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Are you sure?'),
+            content: Text('Do you want to Logout?'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text('No'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: Text('Yes'),
+              ),
+            ],
+          ),
+        )) ??
+        false;
+  }
+
   Widget getFragment(int index) {
     switch (index) {
       case 0:
@@ -31,10 +52,12 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: getFragment(ref.watch(bottomNavigatorIndex)),
-      bottomNavigationBar: const CustomBottomNavBar(),
-    );
+    return WillPopScope(
+        onWillPop: _onWillPop,
+        child: Scaffold(
+          backgroundColor: AppColors.white,
+          body: getFragment(ref.watch(bottomNavigatorIndex)),
+          bottomNavigationBar: const CustomBottomNavBar(),
+        ));
   }
 }
