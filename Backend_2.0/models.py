@@ -16,7 +16,7 @@ class Angajati(Base):
     Nume = Column(String(50), nullable=True)
     Prenume = Column(String(50), nullable=True)
     CNP = Column(String(13), nullable=True)
-    Poza = Column(BLOB, nullable=True)
+   #Poza = Column(BLOB, nullable=True)
     NumarLegitimatie = Column(Integer, nullable=True)
     Divizia = Column(String(50), nullable=True)
     IntervaleAcces = Column(String(100), nullable=True)
