@@ -6,6 +6,8 @@ import 'package:swift_key/screens/main_screen.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'globals.dart' as globals;
+import 'package:intl/intl.dart';
 
 class AccessScreen extends StatefulWidget {
   const AccessScreen({Key? key}) : super(key: key);
@@ -43,10 +45,16 @@ class _AccessScreenState extends State<AccessScreen> {
   }
 
   void _sendCommand(String command) {
-    if (isConnected && connection != null) {
-      connection!.output.add(Uint8List.fromList(utf8.encode(command)));
-      print('Sent command: $command');
+    if (command == 'N') {
+      DateTime now = DateTime.now();
+      globals.clockin = DateFormat('HH:mm').format(now);
+      globals.date = DateFormat('yyyy-MM-dd').format(now);
+      globals.indexList++;
+    } else if (command == 'E') {
+      DateTime now = DateTime.now();
+      globals.clockout = DateFormat('HH:mm').format(now);
     }
+    // Handle other commands
   }
 
   @override
