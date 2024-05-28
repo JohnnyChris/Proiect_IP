@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "swift_key",
+            "cwd": "swift_key",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "swift_key (profile mode)",
+            "cwd": "swift_key",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "swift_key (release mode)",
+            "cwd": "swift_key",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

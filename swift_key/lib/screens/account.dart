@@ -43,11 +43,12 @@ class _AccountScreenState extends State<AccountScreen> {
                 const SizedBox(height: 10),
 
                 //nume
-                Text(globalUsername,
+                Text(globalLastName,
                     style: Theme.of(context).textTheme.headlineMedium),
 
                 //username
-                Text(globalCNP, style: Theme.of(context).textTheme.bodySmall),
+                Text(globalUsername,
+                    style: Theme.of(context).textTheme.bodySmall),
                 const SizedBox(height: 10),
 
                 //edit profile button
