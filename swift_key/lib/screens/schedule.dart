@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:swift_key/constants/colors.dart';
 import 'package:swift_key/widgets/customnavbar2.dart';
+import 'globals.dart' as globals;
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({super.key});
@@ -20,7 +21,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         profileImagePath: 'assets/avatar.png',
       ),
       body: ListView.separated(
-        itemCount: 10,
+        itemCount: globals.indexList,
         separatorBuilder: (_, __) => const SizedBox(height: 2),
         itemBuilder: (_, __) => SingleChildScrollView(
           child: Container(
@@ -47,7 +48,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             style: Theme.of(context).textTheme.bodyLarge!.apply(
                                 color: AppColors.blue, fontWeightDelta: 1),
                           ),
-                          Text("07 nov 2024",
+                          Text(globals.date,
                               style: Theme.of(context).textTheme.bodySmall),
                         ],
                       ),
@@ -76,7 +77,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                   style:
                                       Theme.of(context).textTheme.labelMedium,
                                 ),
-                                Text("09:15",
+                                Text(globals.clockin,
                                     style:
                                         Theme.of(context).textTheme.titleSmall),
                               ],
@@ -99,7 +100,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                     style: Theme.of(context)
                                         .textTheme
                                         .labelMedium),
-                                Text("17.23",
+                                Text(globals.clockout,
                                     style:
                                         Theme.of(context).textTheme.titleSmall),
                               ],
