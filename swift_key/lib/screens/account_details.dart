@@ -49,7 +49,7 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
               ),
               Text(
                 "Profile information",
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
