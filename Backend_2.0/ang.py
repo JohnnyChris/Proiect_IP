@@ -12,6 +12,7 @@ router = APIRouter(
 
 class AngajatiCreate(BaseModel):
     ID_Utilizator: Optional[int]
+    username: Optional[str]
     Nume: Optional[str]
     Prenume: Optional[str]
     CNP: Optional[str]
@@ -26,6 +27,7 @@ class AngajatiCreate(BaseModel):
 class AngajatiResponse(BaseModel):
     ID_Angajat: int
     ID_Utilizator: Optional[int]
+    username: Optional[str]
     Nume: Optional[str]
     Prenume: Optional[str]
     CNP: Optional[str]
@@ -49,13 +51,14 @@ def get_db():
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=AngajatiResponse)
 async def create_angajat(create_angajat: AngajatiCreate, db: Session = Depends(get_db)):
-    if create_angajat.ID_Utilizator is not None:
-        utilizator = db.query(Users).filter(Users.id == create_angajat.ID_Utilizator).first()
+    if create_angajat.username is not None:
+        utilizator = db.query(Users).filter(Users.id == create_angajat.username).first()
         if not utilizator:
             raise HTTPException(status_code=400, detail="Invalid ID_Utilizator. User does not exist.")
     
     new_angajat = Angajati(
         ID_Utilizator=create_angajat.ID_Utilizator,
+        username=create_angajat.username,
         Nume=create_angajat.Nume,
         Prenume=create_angajat.Prenume,
         CNP=create_angajat.CNP,
@@ -75,6 +78,14 @@ async def create_angajat(create_angajat: AngajatiCreate, db: Session = Depends(g
 @router.get("/Angajati/{angajati_id}", response_model=AngajatiResponse)
 async def read_angajati(angajati_id: int, db: Session = Depends(get_db)):
     angajati = db.query(Angajati).filter(Angajati.ID_Angajat == angajati_id).first()
+    if angajati is None:
+        raise HTTPException(status_code=404, detail="Angajat not found")
+    return angajati
+
+# New endpoint to get Angajati details by username
+@router.get("/Angajati/username/{username}", response_model=AngajatiResponse)
+async def get_angajati_by_username(username: str, db: Session = Depends(get_db)):
+    angajati = db.query(Angajati).filter(Angajati.username == username).first()
     if angajati is None:
         raise HTTPException(status_code=404, detail="Angajat not found")
     return angajati

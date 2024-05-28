@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:swift_key/constants/colors.dart';
 import 'package:swift_key/screens/account_details.dart';
+import 'package:swift_key/screens/globals.dart';
 import 'package:swift_key/widgets/customnavbar2.dart';
 import 'package:swift_key/screens/editprofile.dart';
 import 'package:swift_key/screens/information.dart';
@@ -41,13 +42,12 @@ class _AccountScreenState extends State<AccountScreen> {
                 ),
                 const SizedBox(height: 10),
 
-                //name
-                Text("Rogojan Alin-Jonathan",
+                //nume
+                Text(globalUsername,
                     style: Theme.of(context).textTheme.headlineMedium),
 
-                //mail
-                Text("alin.rogojan@student.upt.ro",
-                    style: Theme.of(context).textTheme.bodySmall),
+                //username
+                Text(globalCNP, style: Theme.of(context).textTheme.bodySmall),
                 const SizedBox(height: 10),
 
                 //edit profile button

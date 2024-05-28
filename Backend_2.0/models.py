@@ -13,6 +13,7 @@ class Angajati(Base):
 
     ID_Angajat = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     ID_Utilizator = Column(Integer, nullable=True)
+    username = Column(String(50), unique=True)
     Nume = Column(String(50), nullable=True)
     Prenume = Column(String(50), nullable=True)
     CNP = Column(String(13), nullable=True)

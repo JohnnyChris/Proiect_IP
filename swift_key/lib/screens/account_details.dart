@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:swift_key/widgets/customnavbar2.dart';
+import 'globals.dart' as globals;
 
 class AccountDetailsScreen extends StatefulWidget {
-  const AccountDetailsScreen({super.key});
+  const AccountDetailsScreen({Key? key}) : super(key: key);
 
   @override
   State<AccountDetailsScreen> createState() => AccountDetailsScreenState();
@@ -48,68 +49,68 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
               ),
               Text(
                 "Profile information",
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "First Name",
-                value: "Alin-Jonathan",
+                value: globals.globalFirstName,
                 onPressed: () {},
                 icon: LineAwesomeIcons.user_astronaut,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Last Name",
-                value: "Rogojan",
+                value: globals.globalLastName,
                 onPressed: () {},
                 icon: LineAwesomeIcons.user_1,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "CNP",
-                value: "5030128303941",
+                value: globals.globalCNP,
                 onPressed: () {},
                 icon: LineAwesomeIcons.identification_badge,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Badge ID",
-                value: "#123456",
+                value: "#123456", // Update this with the corresponding global variable
                 onPressed: () {},
                 icon: LineAwesomeIcons.identification_card,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "E-mail",
-                value: "alin.rogojan@student.upt.ro",
+                value: globals.globalEmail.toString(),
                 onPressed: () {},
                 icon: LineAwesomeIcons.mail_bulk,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Phone nr",
-                value: "0720686200",
+                value: globals.globalPhoneNumber,
                 onPressed: () {},
                 icon: LineAwesomeIcons.mobile_phone,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Departament",
-                value: "Fundraising",
+                value: globals.globalDepartment,
                 onPressed: () {},
                 icon: LineAwesomeIcons.damaged_house,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Car plate",
-                value: "SM98RJR",
+                value: globals.globalCarPlate,
                 onPressed: () {},
                 icon: LineAwesomeIcons.caret_square_down,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Access level",
-                value: "Auto",
+                value: globals.globalAccessLevel.toString(),
                 onPressed: () {},
                 icon: LineAwesomeIcons.car,
               ),
@@ -123,12 +124,12 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
 
 class AccountDetailsWidget extends StatelessWidget {
   const AccountDetailsWidget({
-    super.key,
+    Key? key,
     required this.onPressed,
     required this.title,
     required this.value,
     required this.icon,
-  });
+  }) : super(key: key);
 
   final IconData icon;
   final VoidCallback onPressed;
@@ -151,7 +152,7 @@ class AccountDetailsWidget extends StatelessWidget {
           flex: 10,
           child: Text(
             value,
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),
       ],
