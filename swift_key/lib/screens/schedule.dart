@@ -21,9 +21,9 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         profileImagePath: 'assets/avatar.png',
       ),
       body: ListView.separated(
-        itemCount: globals.indexList,
+        itemCount: globals.schedules.length,
         separatorBuilder: (_, __) => const SizedBox(height: 2),
-        itemBuilder: (_, __) => SingleChildScrollView(
+        itemBuilder: (context, index) => SingleChildScrollView(
           child: Container(
             margin: const EdgeInsets.fromLTRB(16.0, 6.0, 16.0, 6.0),
             decoration: BoxDecoration(
@@ -48,7 +48,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             style: Theme.of(context).textTheme.bodyLarge!.apply(
                                 color: AppColors.blue, fontWeightDelta: 1),
                           ),
-                          Text(globals.date,
+                          Text(globals.schedules[index]["date"],
                               style: Theme.of(context).textTheme.bodySmall),
                         ],
                       ),
@@ -77,7 +77,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                   style:
                                       Theme.of(context).textTheme.labelMedium,
                                 ),
-                                Text(globals.clockin,
+                                Text(globals.schedules[index]["clockin"],
                                     style:
                                         Theme.of(context).textTheme.titleSmall),
                               ],
@@ -100,7 +100,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                     style: Theme.of(context)
                                         .textTheme
                                         .labelMedium),
-                                Text(globals.clockout,
+                                Text(globals.schedules[index]["clockout"] ?? "",
                                     style:
                                         Theme.of(context).textTheme.titleSmall),
                               ],
