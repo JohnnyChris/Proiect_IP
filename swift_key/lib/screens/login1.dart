@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:swift_key/constants/colors.dart';
 import 'package:swift_key/screens/main_screen.dart';
-import 'package:swift_key/screens/signup.dart';
 import 'package:http/http.dart' as http;
 import 'globals.dart' as globals;
 
@@ -44,7 +42,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
     final password = _passwordController.text;
 
     final response = await http.post(
-      Uri.parse('http://192.168.215.212:8000/auth/token'),
+      Uri.parse('http://192.168.1.143:8000/auth/token'),
       headers: <String, String>{
         'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -77,7 +75,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
           int.tryParse(userDetails['IntervaleAcces']) ?? 0;
       globals.globalPhoneNumber = userDetails['CodSecuritateBluetooth'];
       globals.globalCarPlate = userDetails['NumarMasina'];
-
+      globals.globalAccesAuto = userDetails['AccesAuto'];
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => MainScreen()),
@@ -167,20 +165,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          SizedBox(
-                            width: double.infinity,
-                            child: TextButton(
-                              onPressed: () {
-                                // Implement forgot password functionality here
-                              },
-                              child: const Text(
-                                "Forgot password",
-                                style: TextStyle(color: Colors.blue),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 40),
                           SizedBox(
                             height: 60,
                             width: double.infinity,
@@ -202,26 +187,6 @@ class _LoginScreen1State extends State<LoginScreen1> {
                           ),
                           const SizedBox(
                             height: 20,
-                          ),
-                          SizedBox(
-                            height: 60,
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SignUpScreen()),
-                                );
-                              },
-                              child: const Text(
-                                "Create account",
-                                style: TextStyle(
-                                  color: AppColors.blue,
-                                ),
-                              ),
-                            ),
                           ),
                         ],
                       ),

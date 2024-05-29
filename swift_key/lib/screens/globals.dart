@@ -10,6 +10,7 @@ String globalPhoneNumber = '';
 String globalDepartment = '';
 String globalCarPlate = '';
 int globalAccessLevel = 0;
+int globalAccesAuto = 0;
 // String clockin = '';
 // String clockout = '';
 // String date = '';

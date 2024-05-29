@@ -39,11 +39,6 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text("Change picture"),
-                    ),
-                    const SizedBox(height: 10),
                   ],
                 ),
               ),
@@ -75,7 +70,8 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Badge ID",
-                value: "#123456", // Update this with the corresponding global variable
+                value:
+                    "#123456", // Update this with the corresponding global variable
                 onPressed: () {},
                 icon: LineAwesomeIcons.identification_card,
               ),
@@ -109,8 +105,8 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
-                title: "Access level",
-                value: globals.globalAccessLevel.toString(),
+                title: "Access Auto",
+                value: globals.globalAccesAuto.toString(),
                 onPressed: () {},
                 icon: LineAwesomeIcons.car,
               ),

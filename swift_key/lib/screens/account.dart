@@ -4,11 +4,9 @@ import 'package:swift_key/constants/colors.dart';
 import 'package:swift_key/screens/account_details.dart';
 import 'package:swift_key/screens/globals.dart';
 import 'package:swift_key/widgets/customnavbar2.dart';
-import 'package:swift_key/screens/editprofile.dart';
 import 'package:swift_key/screens/information.dart';
 import 'package:swift_key/screens/login1.dart';
 import 'package:swift_key/screens/schedule.dart';
-import 'package:swift_key/screens/settings.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -51,41 +49,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     style: Theme.of(context).textTheme.bodySmall),
                 const SizedBox(height: 10),
 
-                //edit profile button
-                SizedBox(
-                  width: 150,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const EditProfileScreen()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.blue,
-                        side: BorderSide.none,
-                        shape: StadiumBorder()),
-                    child: const Text(
-                      "Edit profile",
-                      style: TextStyle(color: AppColors.white),
-                    ),
-                  ),
-                ),
                 const SizedBox(height: 10),
-
-                //menu
-                //settings
-                ProfileMenuWidget(
-                    title: "Settings",
-                    icon: LineAwesomeIcons.cog,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SettingsScreen()),
-                      );
-                    }),
 
                 //account details
                 ProfileMenuWidget(
