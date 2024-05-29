@@ -6,6 +6,7 @@ import models
 from database import engine, SessionLocal
 from auth import get_current_user, router as auth_router
 from ang import router as ang_router
+from reg import router as reg_router
 
 app = FastAPI()
 
@@ -21,6 +22,7 @@ app.add_middleware(
 # Include routers
 app.include_router(auth_router)
 app.include_router(ang_router)  # Include the ang router
+app.include_router(reg_router)
 
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
