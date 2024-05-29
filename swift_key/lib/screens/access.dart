@@ -183,7 +183,7 @@ class _AccessScreenState extends State<AccessScreen> {
                 width: 240,
                 height: 120,
                 child: ElevatedButton(
-                  onPressed: () => _sendCommand(0), // Command to end work time
+                  onPressed: () => _sendCommand(globals.globalIdAngajat), // Command to end work time
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
