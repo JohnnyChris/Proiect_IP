@@ -54,14 +54,14 @@ class AccountDetailsScreenState extends State<AccountDetailsScreen> {
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "First Name",
-                value: globals.globalFirstName,
+                value: globals.globalLastName,
                 onPressed: () {},
                 icon: LineAwesomeIcons.user_astronaut,
               ),
               const SizedBox(height: 12),
               AccountDetailsWidget(
                 title: "Last Name",
-                value: globals.globalLastName,
+                value: globals.globalFirstName,
                 onPressed: () {},
                 icon: LineAwesomeIcons.user_1,
               ),

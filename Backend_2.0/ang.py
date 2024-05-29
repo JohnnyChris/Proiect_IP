@@ -52,7 +52,7 @@ def get_db():
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=AngajatiResponse)
 async def create_angajat(create_angajat: AngajatiCreate, db: Session = Depends(get_db)):
     if create_angajat.username is not None:
-        utilizator = db.query(Users).filter(Users.id == create_angajat.username).first()
+        utilizator = db.query(Users).filter(Users.username == create_angajat.username).first()
         if not utilizator:
             raise HTTPException(status_code=400, detail="Invalid ID_Utilizator. User does not exist.")
     
