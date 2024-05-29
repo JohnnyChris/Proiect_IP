@@ -53,17 +53,31 @@ class _AccessScreenState extends State<AccessScreen> {
     }
   }
 
-  void _sendCommand(String command) {
+  void _disconnectFromBluetooth() async {
     if (isConnected && connection != null) {
-      connection!.output.add(Uint8List.fromList(utf8.encode(command)));
+      await connection!.close();
+      setState(() {
+        isConnected = false;
+        connection = null;
+      });
+      print('Disconnected from the device');
+    }
+  }
+
+  void _sendCommand(int command) async {
+    if (isConnected && connection != null) {
+      connection!.output
+          .add(Uint8List.fromList(utf8.encode(command.toString() + "\n")));
+      await connection!.output.allSent; // Ensure all data is sent
       print('Sent command: $command');
 
-      if (command == 'alin') {
+      if (command == 1) {
         globals.schedules.add({
           "date": DateFormat('yyyy-MM-dd').format(DateTime.now()),
           "clockin": DateFormat('HH:mm').format(DateTime.now())
         });
-      } else if (command == '0') {
+        //_disconnectFromBluetooth();
+      } else if (command == 0) {
         Map<String, dynamic> lastItem = globals.schedules.last;
         globals.schedules.removeLast();
         globals.schedules.add({
@@ -71,6 +85,8 @@ class _AccessScreenState extends State<AccessScreen> {
           "clockin": lastItem["clockin"],
           "clockout": DateFormat('HH:mm').format(DateTime.now())
         });
+      } else if (command == 'C') {
+        _connectToBluetooth();
       }
     }
     // Handle other commands
@@ -99,7 +115,7 @@ class _AccessScreenState extends State<AccessScreen> {
                 width: 240,
                 height: 120,
                 child: ElevatedButton(
-                  onPressed: () => _sendCommand('alin'),
+                  onPressed: () => _sendCommand(1),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -119,8 +135,7 @@ class _AccessScreenState extends State<AccessScreen> {
                 width: 240,
                 height: 120,
                 child: ElevatedButton(
-                  onPressed: () =>
-                      _sendCommand('C'), // Command to open car gate
+                  onPressed: () => _sendCommand(2), // Command to open car gate
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -140,8 +155,7 @@ class _AccessScreenState extends State<AccessScreen> {
                 width: 240,
                 height: 120,
                 child: ElevatedButton(
-                  onPressed: () =>
-                      _sendCommand('0'), // Command to end work time
+                  onPressed: () => _sendCommand(0), // Command to end work time
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
