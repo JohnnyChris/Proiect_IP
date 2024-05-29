@@ -34,7 +34,9 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                
                 Row(
+                  
                   children: [
                     const Icon(LineAwesomeIcons.calendar_1),
                     const SizedBox(width: 10),
@@ -119,3 +121,5 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
     );
   }
 }
+
+

@@ -82,6 +82,7 @@ def create_access_token(username: str, user_id: int, angajati, expires_delta: ti
     encode = {
         'sub': username,
         'id': user_id,
+        'ID_Angajat': angajati.ID_Angajat,
         'Nume': angajati.Nume,
         'Prenume': angajati.Prenume,
         'CNP': angajati.CNP,

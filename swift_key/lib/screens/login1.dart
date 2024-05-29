@@ -27,8 +27,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
     }
 
     final payload = base64Url.decode(base64Url.normalize(parts[1]));
-    final Map<String, dynamic> decodedPayload =
-        json.decode(utf8.decode(payload));
+    final Map<String, dynamic> decodedPayload = json.decode(utf8.decode(payload));
     return decodedPayload;
   }
 
@@ -41,8 +40,11 @@ class _LoginScreen1State extends State<LoginScreen1> {
     final username = _usernameController.text;
     final password = _passwordController.text;
 
+    print('Username: $username');
+    print('Password: $password');
+
     final response = await http.post(
-      Uri.parse('http://192.168.1.143:8000/auth/token'),
+      Uri.parse('http://192.168.1.140:8000/auth/token'),
       headers: <String, String>{
         'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -60,22 +62,39 @@ class _LoginScreen1State extends State<LoginScreen1> {
       final responseData = json.decode(response.body);
       final accessToken = responseData['access_token'];
 
+      print('Access Token: $accessToken');
+
       // Decode the JWT token to get user details
       final userDetails = _decodeJWT(accessToken);
 
       // Store user details in global variables
-      globals.globalUsername = userDetails['sub'];
-      globals.globalUserId = userDetails['id'];
-      globals.globalFirstName = userDetails['Nume'];
-      globals.globalLastName = userDetails['Prenume'];
-      globals.globalCNP = userDetails['CNP'];
-      globals.globalEmail = userDetails['NumarLegitimatie'];
-      globals.globalDepartment = userDetails['Divizia'];
-      globals.globalAccessLevel =
-          int.tryParse(userDetails['IntervaleAcces']) ?? 0;
-      globals.globalPhoneNumber = userDetails['CodSecuritateBluetooth'];
-      globals.globalCarPlate = userDetails['NumarMasina'];
-      globals.globalAccesAuto = userDetails['AccesAuto'];
+      globals.globalUsername = userDetails['sub'] ?? '';
+      globals.globalUserId = userDetails['id'] ?? 0;
+      globals.globalIdAngajat = userDetails['ID_Angajat'] != null ? int.tryParse(userDetails['ID_Angajat'].toString()) ?? 0 : 0;
+      globals.globalFirstName = userDetails['Nume'] ?? '';
+      globals.globalLastName = userDetails['Prenume'] ?? '';
+      globals.globalCNP = userDetails['CNP'] ?? '';
+      globals.globalEmail = userDetails['NumarLegitimatie'] ?? '';
+      globals.globalDepartment = userDetails['Divizia'] ?? '';
+      globals.globalAccessLevel = userDetails['IntervaleAcces'] != null ? int.tryParse(userDetails['IntervaleAcces'].toString()) ?? 0 : 0;
+      globals.globalPhoneNumber = userDetails['CodSecuritateBluetooth'] ?? '';
+      globals.globalCarPlate = userDetails['NumarMasina'] ?? '';
+      globals.globalAccesAuto = userDetails['AccesAuto'] ?? '';
+
+      print('User Details:');
+      print('Username: ${globals.globalUsername}');
+      print('User ID: ${globals.globalUserId}');
+      print('ID Angajat: ${globals.globalIdAngajat}');
+      print('First Name: ${globals.globalFirstName}');
+      print('Last Name: ${globals.globalLastName}');
+      print('CNP: ${globals.globalCNP}');
+      print('Email: ${globals.globalEmail}');
+      print('Department: ${globals.globalDepartment}');
+      print('Access Level: ${globals.globalAccessLevel}');
+      print('Phone Number: ${globals.globalPhoneNumber}');
+      print('Car Plate: ${globals.globalCarPlate}');
+      print('Access Auto: ${globals.globalAccesAuto}');
+
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => MainScreen()),

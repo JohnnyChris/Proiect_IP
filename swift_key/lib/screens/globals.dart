@@ -5,6 +5,7 @@ String globalFirstName = '';
 String globalLastName = '';
 String globalCNP = '';
 int globalUserId = 0;
+int globalIdAngajat = 0;
 int globalEmail = 0;
 String globalPhoneNumber = '';
 String globalDepartment = '';
