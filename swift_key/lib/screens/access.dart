@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:swift_key/widgets/customnavbar2.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'globals.dart' as globals;
 import 'package:intl/intl.dart';
+import 'dart:convert';
+import 'dart:typed_data';
 
 class AccessScreen extends StatefulWidget {
   const AccessScreen({Key? key}) : super(key: key);
@@ -16,12 +19,23 @@ class _AccessScreenState extends State<AccessScreen> {
   BluetoothConnection? connection;
   bool isConnected = false;
   String hc05Address =
-      "90:9A:77:38:07:B4"; // Replace with your HC-05 MAC address
+      "00:22:09:01:16:57"; // Replace with your HC-05 MAC address
 
   @override
   void initState() {
     super.initState();
-    _connectToBluetooth();
+    _checkPermissions();
+  }
+
+  Future<void> _checkPermissions() async {
+    if (await Permission.bluetoothScan.request().isGranted &&
+        await Permission.bluetoothConnect.request().isGranted &&
+        await Permission.bluetooth.request().isGranted &&
+        await Permission.location.request().isGranted) {
+      _connectToBluetooth();
+    } else {
+      print('Permissions not granted');
+    }
   }
 
   void _connectToBluetooth() async {
@@ -40,19 +54,24 @@ class _AccessScreenState extends State<AccessScreen> {
   }
 
   void _sendCommand(String command) {
-    if (command == 'N') {
-      globals.schedules.add({
-        "date": DateFormat('yyyy-MM-dd').format(DateTime.now()),
-        "clockin": DateFormat('HH:mm').format(DateTime.now())
-      });
-    } else if (command == 'E') {
-      Map<String, dynamic> lastItem = globals.schedules.last;
-      globals.schedules.removeLast();
-      globals.schedules.add({
-        "date": lastItem["date"],
-        "clockin": lastItem["clockin"],
-        "clockout": DateFormat('HH:mm').format(DateTime.now())
-      });
+    if (isConnected && connection != null) {
+      connection!.output.add(Uint8List.fromList(utf8.encode(command)));
+      print('Sent command: $command');
+
+      if (command == 'alin') {
+        globals.schedules.add({
+          "date": DateFormat('yyyy-MM-dd').format(DateTime.now()),
+          "clockin": DateFormat('HH:mm').format(DateTime.now())
+        });
+      } else if (command == '0') {
+        Map<String, dynamic> lastItem = globals.schedules.last;
+        globals.schedules.removeLast();
+        globals.schedules.add({
+          "date": lastItem["date"],
+          "clockin": lastItem["clockin"],
+          "clockout": DateFormat('HH:mm').format(DateTime.now())
+        });
+      }
     }
     // Handle other commands
   }
@@ -80,7 +99,7 @@ class _AccessScreenState extends State<AccessScreen> {
                 width: 240,
                 height: 120,
                 child: ElevatedButton(
-                  onPressed: () => _sendCommand('N'),
+                  onPressed: () => _sendCommand('alin'),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -122,7 +141,7 @@ class _AccessScreenState extends State<AccessScreen> {
                 height: 120,
                 child: ElevatedButton(
                   onPressed: () =>
-                      _sendCommand('E'), // Command to end work time
+                      _sendCommand('0'), // Command to end work time
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
