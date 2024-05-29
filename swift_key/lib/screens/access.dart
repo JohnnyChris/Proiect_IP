@@ -143,7 +143,7 @@ class _AccessScreenState extends State<AccessScreen> {
                 width: 240,
                 height: 120,
                 child: ElevatedButton(
-                  onPressed: () => _sendCommand(2), // Command to open the gate
+                  onPressed: () => _sendCommand(9999999), // Command to open the gate
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
