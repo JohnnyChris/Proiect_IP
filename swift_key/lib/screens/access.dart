@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:swift_key/widgets/customnavbar2.dart';
-import 'package:swift_key/screens/home.dart';
-import 'package:swift_key/screens/main_screen.dart';
-import 'dart:convert';
-import 'dart:typed_data';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'globals.dart' as globals;
 import 'package:intl/intl.dart';
@@ -46,13 +41,18 @@ class _AccessScreenState extends State<AccessScreen> {
 
   void _sendCommand(String command) {
     if (command == 'N') {
-      DateTime now = DateTime.now();
-      globals.clockin = DateFormat('HH:mm').format(now);
-      globals.date = DateFormat('yyyy-MM-dd').format(now);
-      globals.indexList++;
+      globals.schedules.add({
+        "date": DateFormat('yyyy-MM-dd').format(DateTime.now()),
+        "clockin": DateFormat('HH:mm').format(DateTime.now())
+      });
     } else if (command == 'E') {
-      DateTime now = DateTime.now();
-      globals.clockout = DateFormat('HH:mm').format(now);
+      Map<String, dynamic> lastItem = globals.schedules.last;
+      globals.schedules.removeLast();
+      globals.schedules.add({
+        "date": lastItem["date"],
+        "clockin": lastItem["clockin"],
+        "clockout": DateFormat('HH:mm').format(DateTime.now())
+      });
     }
     // Handle other commands
   }
