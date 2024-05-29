@@ -24,7 +24,7 @@ class _AccessScreenState extends State<AccessScreen> {
   @override
   void initState() {
     super.initState();
-    _checkPermissions();
+    //_checkPermissions();
   }
 
   Future<void> _checkPermissions() async {
@@ -71,7 +71,7 @@ class _AccessScreenState extends State<AccessScreen> {
       await connection!.output.allSent; // Ensure all data is sent
       print('Sent command: $command');
 
-      if (command == 1) {
+      if (command == 10) {
         globals.schedules.add({
           "date": DateFormat('yyyy-MM-dd').format(DateTime.now()),
           "clockin": DateFormat('HH:mm').format(DateTime.now())
@@ -115,7 +115,7 @@ class _AccessScreenState extends State<AccessScreen> {
                 width: 240,
                 height: 120,
                 child: ElevatedButton(
-                  onPressed: () => _sendCommand(1),
+                  onPressed: () => _sendCommand(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

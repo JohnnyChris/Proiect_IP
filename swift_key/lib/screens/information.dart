@@ -34,7 +34,7 @@ class _InfoScreenState extends State<InfoScreen> {
               Padding(
                 padding: const EdgeInsets.all(7.0),
                 child: Text(
-                  'SwiftKey Access is an app developed by Echipa Petarda SRL. This app is still a prototype, so please report any bugs and we will do our best to solve them as soon as posible.\n\nAll rights reserved by\nEchipa Petarda SRL.',
+                  'SwiftKey Access is an app developed by Echipa Grupa4.2 SRL. This app is still a prototype, so please report any bugs and we will do our best to solve them as soon as posible.\n\nAll rights reserved by\nEchipa Grupa4.2 SRL.',
                   style: TextStyle(fontSize: 15),
                 ),
               ),
