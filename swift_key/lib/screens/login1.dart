@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:swift_key/constants/colors.dart';
 import 'package:swift_key/screens/main_screen.dart';
 import 'package:swift_key/screens/signup.dart';
@@ -28,7 +29,8 @@ class _LoginScreen1State extends State<LoginScreen1> {
     }
 
     final payload = base64Url.decode(base64Url.normalize(parts[1]));
-    final Map<String, dynamic> decodedPayload = json.decode(utf8.decode(payload));
+    final Map<String, dynamic> decodedPayload =
+        json.decode(utf8.decode(payload));
     return decodedPayload;
   }
 
@@ -42,7 +44,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
     final password = _passwordController.text;
 
     final response = await http.post(
-      Uri.parse('http://192.168.1.8:8000/auth/token'),
+      Uri.parse('http://192.168.215.212:8000/auth/token'),
       headers: <String, String>{
         'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -71,11 +73,10 @@ class _LoginScreen1State extends State<LoginScreen1> {
       globals.globalCNP = userDetails['CNP'];
       globals.globalEmail = userDetails['NumarLegitimatie'];
       globals.globalDepartment = userDetails['Divizia'];
-      globals.globalAccessLevel = int.tryParse(userDetails['IntervaleAcces']) ?? 0;
+      globals.globalAccessLevel =
+          int.tryParse(userDetails['IntervaleAcces']) ?? 0;
       globals.globalPhoneNumber = userDetails['CodSecuritateBluetooth'];
       globals.globalCarPlate = userDetails['NumarMasina'];
-
-      
 
       Navigator.push(
         context,
@@ -143,7 +144,7 @@ class _LoginScreen1State extends State<LoginScreen1> {
                           TextFormField(
                             controller: _usernameController,
                             decoration: const InputDecoration(
-                              prefixIcon: Icon(Icons.email),
+                              prefixIcon: Icon(LineAwesomeIcons.user_astronaut),
                               labelText: "Username",
                             ),
                           ),
@@ -155,7 +156,9 @@ class _LoginScreen1State extends State<LoginScreen1> {
                               prefixIcon: const Icon(Icons.lock),
                               labelText: "Password",
                               suffixIcon: IconButton(
-                                icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility),
+                                icon: Icon(_obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility),
                                 onPressed: () {
                                   setState(() {
                                     _obscureText = !_obscureText;
@@ -207,7 +210,9 @@ class _LoginScreen1State extends State<LoginScreen1> {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SignUpScreen()),
                                 );
                               },
                               child: const Text(
